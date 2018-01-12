@@ -9,17 +9,25 @@ import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+
+
 
 public class Stopwatch extends JFrame {
 	private static final long serialVersionUID = 1L;
-	
+
 	long startTime;
 	long stopTime;
 	double elapsedTime;
 	boolean timeStarted = false;
-	String runner1 = "max";
-	String runner2 = "john";
+	String runner1;
+	String runner2;
+	String runner3;
+	String runner4;
+	String runner5;
+	String runner6;
+	String runner7;
 
 	JButton startButton = new JButton();
 	JLabel startLabel = new JLabel();
@@ -33,19 +41,23 @@ public class Stopwatch extends JFrame {
 
 	JLabel elapsedLabel = new JLabel();
 	JTextField elapsedTextField = new JTextField();
-	
-	
+
 	JButton stopButton1 = new JButton();
 	JLabel stopLabel1 = new JLabel();
 	JTextField stopTextField1 = new JTextField();
 	JLabel elapsedLabel1 = new JLabel();
 	JTextField elapsedTextField1 = new JTextField();
-	
 
 	public Stopwatch(String title) {
 
 		setTitle(title);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		for (int i = 0; i < 2; i++) {
+			
+			
+		runner1 = JOptionPane.showInputDialog("Enter runner " + (i+1) + " name");
+		}
 
 		// Create and set up the content pane.
 		getContentPane().setLayout(new GridBagLayout());
@@ -109,8 +121,6 @@ public class Stopwatch extends JFrame {
 				exitButtonActionPerformed(e);
 			}
 
-			
-
 		});
 
 		elapsedLabel.setText("  Elapsed Time Seconds  ");
@@ -118,7 +128,6 @@ public class Stopwatch extends JFrame {
 		gridConstraints.gridy = 1;
 		getContentPane().add(elapsedLabel, gridConstraints);
 
-		
 		// second line
 		stopButton1.setText("Stop Timing");
 		gridConstraints.gridx = 0;
@@ -147,24 +156,13 @@ public class Stopwatch extends JFrame {
 		gridConstraints.gridx = 3;
 		gridConstraints.gridy = 2;
 		getContentPane().add(elapsedLabel1, gridConstraints);
-		
+
 		elapsedTextField1.setText("");
 		elapsedTextField1.setColumns(20);
 		gridConstraints.gridx = 4;
 		gridConstraints.gridy = 2;
 		getContentPane().add(elapsedTextField1, gridConstraints);
-		
-		
-		
-		
-		
-		
-		
-		
 
-		
-		
-		
 		elapsedTextField.setText("");
 		elapsedTextField.setColumns(20);
 		gridConstraints.gridx = 4;
@@ -177,8 +175,6 @@ public class Stopwatch extends JFrame {
 		pack();
 
 	} // end of constructor
-
-	
 
 	private void startButtonActionPerformed(ActionEvent e) {
 		startTime = System.currentTimeMillis();
@@ -203,7 +199,7 @@ public class Stopwatch extends JFrame {
 		}
 
 	}
-	
+
 	protected void stop1ButtonActionPerformed(ActionEvent e) {
 		if (timeStarted) {
 			stopTime = System.currentTimeMillis();
@@ -214,12 +210,12 @@ public class Stopwatch extends JFrame {
 		} else {
 			return;
 		}
-		
+
 	}
-	
+
 	private void exitButtonActionPerformed(ActionEvent e) {
 		System.exit(0);
-		
+
 	}
 
 } // end of class
